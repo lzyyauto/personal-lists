@@ -1,2 +1,4 @@
 # Generated from lists/blacklist.txt; edit the source TXT instead.
 # Set force-policy in Quantumult X; direct below is only a placeholder.
+host-suffix, twitter.com, direct
+host-suffix, x.com, direct

@@ -1,0 +1,7 @@
+# Generated from lists/whitelist.txt; edit the source TXT instead.
+# Set force-policy in Quantumult X; direct below is only a placeholder.
+host-suffix, 2109116.xyz, direct
+host-suffix, pttime.org, direct
+host-suffix, carpt.net, direct
+host-suffix, qingwapt.com, direct
+host-suffix, duolingo.cn, direct

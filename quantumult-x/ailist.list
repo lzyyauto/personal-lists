@@ -1,0 +1,5 @@
+# Generated from lists/ailist.txt; edit the source TXT instead.
+# Set force-policy in Quantumult X; direct below is only a placeholder.
+host-suffix, muse.com, direct
+host-suffix, muse.ai, direct
+host-suffix, metaaivm.com, direct

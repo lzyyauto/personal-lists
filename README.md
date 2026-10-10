@@ -42,7 +42,29 @@ Mihomo 可以直接读取这三份 TXT 文件：在 `rule-providers` 中指定 `
 - 建议匹配顺序：内网直连 → 白名单 → AI 专用名单 → 普通黑名单 → 原有应用及其他规则。AI 专用名单覆盖普通黑名单；白名单仍可显式指定直连。
 - 这是手动选择策略，BWG 不可用时不会因此自动切换到其他策略。自动故障切换需要另行配置。
 
-当前仅准备接入示例，未修改两份客户端配置，设备端尚未验收。
+设备端的下载、选择状态和实际分流仍需在各客户端验收。
+
+## Quantumult X 接入
+
+`quantumult-x/` 中的三个 `.list` 文件由 `scripts/render_quantumult_x.py` 自动生成：`+.example.com` 转为 `host-suffix, example.com, direct`，保持根域名及全部子域名的匹配范围。生成文件中的 `direct` 是占位策略，客户端必须使用 `force-policy` 指定动作。
+
+```ini
+[filter_remote]
+https://raw.githubusercontent.com/lzyyauto/personal-lists/main/quantumult-x/whitelist.list, tag=个人白名单, force-policy=direct, inserted-resource=true, update-interval=3600, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/lzyyauto/personal-lists/main/quantumult-x/ailist.list, tag=个人 AI 名单, force-policy=AI 专用, inserted-resource=true, update-interval=3600, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/lzyyauto/personal-lists/main/quantumult-x/blacklist.list, tag=个人黑名单, force-policy=Final, inserted-resource=true, update-interval=3600, opt-parser=false, enabled=true
+```
+
+`AI 专用` 应定义为手动选择组，首选 BWG；`Final` 是统一代理入口，首选包含 Local、BWG、CF 的全自动组，也可改选排除 BWG 的自动组或独立 BWG、CF 组。其他应用组选择 `Final` 时才跟随这一入口，显式选择直连或拦截时使用各自选择。
+
+日常只编辑 `lists/*.txt`。推送到 main 后，GitHub Actions 自动重新生成 QX 文件并提交；设备随后按每小时的周期更新。不要手动修改生成文件。也可在推送前本地生成并检查：
+
+```sh
+python3 scripts/render_quantumult_x.py
+python3 scripts/render_quantumult_x.py --check
+```
+
+空黑名单生成仅含注释的文件，不添加任何占位匹配域名。白名单、AI 名单和黑名单按上述顺序插入；QX 对不同匹配类型和本地覆盖有自己的优先级，增加与名单重叠的本地规则时需在手机上检查实际命中。
 
 ## GitHub 仓库与远程地址
 

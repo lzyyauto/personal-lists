@@ -1,0 +1,38 @@
+name: Update Quantumult X lists
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lists/*.txt'
+      - 'scripts/render_quantumult_x.py'
+      - '.github/workflows/render-quantumult-x.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-quantumult-x
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Generate native rules
+        run: python scripts/render_quantumult_x.py
+      - name: Publish generated files
+        run: |
+          git add quantumult-x/
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update generated Quantumult X lists'
+          git push origin HEAD:main

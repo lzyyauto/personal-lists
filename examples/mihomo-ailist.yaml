@@ -35,14 +35,14 @@ rule-providers:
     interval: 3600
     proxy: "🚀 默认代理"
 
-  aillist:
+  ailist:
     type: http
     behavior: domain
     format: text
     url: "https://raw.githubusercontent.com/lzyyauto/personal-lists/main/lists/ailist.txt"
-    path: ./rule-providers/aillist.txt
+    path: ./rule-providers/ailist.txt
     interval: 3600
-    proxy: "🚀 默认代理"      # 指定规则下载出口，避免依赖正在下载的 aillist。
+    proxy: "🚀 默认代理"      # 指定规则下载出口，避免依赖正在下载的 ailist。
 
 # 此列表示例替换原规则列表的前段，随后继续追加原有应用及兜底规则。
 # private_ip、private_domain 使用现有配置的 rule-providers。
@@ -51,7 +51,7 @@ rules:
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
   - RULE-SET,custom_white,直连
-  - RULE-SET,aillist,🤖 AI 专用
+  - RULE-SET,ailist,🤖 AI 专用
   - RULE-SET,custom_black,🚀 默认代理
 
 profile:

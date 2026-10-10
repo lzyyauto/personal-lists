@@ -1,0 +1,58 @@
+# 合并示例，不是完整配置；三个 HTTP 规则集直接读取仓库中的 TXT 名单。
+# 新组添加到现有 proxy-groups；👑 BWG 的定义替换原同名组，避免重复。
+# BWG 是现有 proxy-providers 中的订阅名称，不是这里新增的订阅。
+proxy-groups:
+  - name: "👑 BWG"
+    type: select
+    use:
+      - BWG
+
+  - name: "🤖 AI 专用"
+    type: select
+    default-selected: "👑 BWG"
+    proxies:
+      - "👑 BWG"             # 首项也设为 BWG，作为默认选择。
+      - "♻️ 美国自动"
+      - "♻️ 日本自动"
+      - "🚀 默认代理"
+
+rule-providers:
+  custom_white:
+    type: http
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/lzyyauto/personal-lists/main/lists/whitelist.txt"
+    path: ./rule-providers/whitelist.txt
+    interval: 3600
+    proxy: "🚀 默认代理"
+
+  custom_black:
+    type: http
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/lzyyauto/personal-lists/main/lists/blacklist.txt"
+    path: ./rule-providers/blacklist.txt
+    interval: 3600
+    proxy: "🚀 默认代理"
+
+  aillist:
+    type: http
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/lzyyauto/personal-lists/main/lists/ailist.txt"
+    path: ./rule-providers/aillist.txt
+    interval: 3600
+    proxy: "🚀 默认代理"      # 指定规则下载出口，避免依赖正在下载的 aillist。
+
+# 此列表示例替换原规则列表的前段，随后继续追加原有应用及兜底规则。
+# private_ip、private_domain 使用现有配置的 rule-providers。
+# 上方 custom_white、custom_black 的定义替换原同名本地规则集，不要重复添加。
+rules:
+  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,private_domain,直连
+  - RULE-SET,custom_white,直连
+  - RULE-SET,aillist,🤖 AI 专用
+  - RULE-SET,custom_black,🚀 默认代理
+
+profile:
+  store-selected: true

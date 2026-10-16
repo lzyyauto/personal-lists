@@ -6,3 +6,4 @@
 +.carpt.net
 +.qingwapt.com
 +.duolingo.cn
++.yzzay.cfd

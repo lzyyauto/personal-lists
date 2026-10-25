@@ -1,6 +1,9 @@
 # AI 专用名单：默认使用 BWG，允许客户端手动切换策略。
 # 每行一个小写域名匹配条目；不要填写 URL 或客户端规则指令。
 # Mihomo：普通域名精确匹配，*. 只匹配一级子域名，+. 包含根域名及所有子域名。
+
+# Meta Muse
 +.muse.com
 +.muse.ai
 +.metaaivm.com
++.mute.ai

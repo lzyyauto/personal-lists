@@ -3,3 +3,29 @@
 # Mihomo：普通域名精确匹配，*. 只匹配一级子域名，+. 包含根域名及所有子域名。
 +.twitter.com
 +.x.com
+
+# Peach
++.r18.dev
++.fanza.jp
++.dmm.co.jp
++.prestige-av.com
++.mgstage.com
++.faleno.jp
++.dahlia-av.jp
++.fc2club.top
++.freejavbt.com
++.airav.io
++.avsox.click
++.adult.contents.fc2.com
++.fc2cmadb.com
++.fc2ppv-db.com
++.javten.com
++.javarchive.com
++.1pondo.tv
++.javdb.com
++.javbus.com
++.manko.fun
++.sukebei.nyaa.si
++.avbase.net
++.avwikidb.com
++.minnano-av.com

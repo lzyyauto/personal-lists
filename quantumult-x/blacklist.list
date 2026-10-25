@@ -2,3 +2,27 @@
 # Set force-policy in Quantumult X; direct below is only a placeholder.
 host-suffix, twitter.com, direct
 host-suffix, x.com, direct
+host-suffix, r18.dev, direct
+host-suffix, fanza.jp, direct
+host-suffix, dmm.co.jp, direct
+host-suffix, prestige-av.com, direct
+host-suffix, mgstage.com, direct
+host-suffix, faleno.jp, direct
+host-suffix, dahlia-av.jp, direct
+host-suffix, fc2club.top, direct
+host-suffix, freejavbt.com, direct
+host-suffix, airav.io, direct
+host-suffix, avsox.click, direct
+host-suffix, adult.contents.fc2.com, direct
+host-suffix, fc2cmadb.com, direct
+host-suffix, fc2ppv-db.com, direct
+host-suffix, javten.com, direct
+host-suffix, javarchive.com, direct
+host-suffix, 1pondo.tv, direct
+host-suffix, javdb.com, direct
+host-suffix, javbus.com, direct
+host-suffix, manko.fun, direct
+host-suffix, sukebei.nyaa.si, direct
+host-suffix, avbase.net, direct
+host-suffix, avwikidb.com, direct
+host-suffix, minnano-av.com, direct

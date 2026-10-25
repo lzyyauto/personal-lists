@@ -6,4 +6,4 @@
 +.muse.com
 +.muse.ai
 +.metaaivm.com
-+.mute.ai
++.meta.ai

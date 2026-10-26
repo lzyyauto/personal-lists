@@ -29,3 +29,7 @@
 +.avbase.net
 +.avwikidb.com
 +.minnano-av.com
++.mr-michiru.com
+
+# Google 
++.c.gle
